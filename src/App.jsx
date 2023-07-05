@@ -21,8 +21,27 @@ export default function App() {
     students.forEach(printStudentInfo);
 
     return (
-        <div>
-            Hello World
+        <div className="container">
+            <h1>Student Information Table</h1>
+            <div className="line" />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Average Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {students.map((student) => (
+                        <tr key={student.name}>
+                            <td>{student.name}</td>
+                            <td>{student.age}</td>
+                            <td>{parseFloat(calculateAverageGrade(student.grades)).toFixed(2)}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
